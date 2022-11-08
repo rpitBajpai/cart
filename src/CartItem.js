@@ -32,45 +32,45 @@ class CartItem extends React.Component{
     //     });
     // }
 
-    increaseQuantity = () => {
-        // console.log('this.state', this.state);
-        // this.state.qty += 1;
+    // increaseQuantity = () => {
+    //     // console.log('this.state', this.state);
+    //     // this.state.qty += 1;
 
-        // setState form1
-        // this.setState({
-        //     qty: this.state.qty + 1
-        // });
+    //     // setState form1
+    //     // this.setState({
+    //     //     qty: this.state.qty + 1
+    //     // });
 
-        // setState form2 - If previous state required, use this form
-        this.setState((prevState) => {
-            return{
-                qty: prevState.qty + 1
-            }
-        }, () => {
-            console.log('this.state', this.state);
-        });
-    }
+    //     // setState form2 - If previous state required, use this form
+    //     this.setState((prevState) => {
+    //         return{
+    //             qty: prevState.qty + 1
+    //         }
+    //     }, () => {
+    //         console.log('this.state', this.state);
+    //     });
+    // }
 
-    decreaseQuantity = () => {
-        const {qty} = this.state;
+    // decreaseQuantity = () => {
+    //     const {qty} = this.state;
 
-        if(qty == 0){
-            return;
-        }
-        // console.log('dec qty');
+    //     if(qty == 0){
+    //         return;
+    //     }
+    //     // console.log('dec qty');
 
-        // this.setState({
-        //     qty: this.state.qty - 1
-        // });
+    //     // this.setState({
+    //     //     qty: this.state.qty - 1
+    //     // });
 
-        this.setState((prevState) => {
-            // if(prevState.qty>0){
-                return{
-                qty: prevState.qty - 1
-                }
-            // }
-        });
-    }
+    //     this.setState((prevState) => {
+    //         // if(prevState.qty>0){
+    //             return{
+    //             qty: prevState.qty - 1
+    //             }
+    //         // }
+    //     });
+    // }
 
     render(){
         console.log('this.props', this.props);
@@ -90,7 +90,8 @@ class CartItem extends React.Component{
                         className="action-icons" 
                         src="https://cdn-icons-png.flaticon.com/128/992/992651.png"
                         // onClick={this.increaseQuantity.bind(this)}
-                        onClick={this.increaseQuantity}
+                        // onClick={this.increaseQuantity}
+                        onClick={() => this.props.onIncreaseQuantity(this.props.product)}
                         />
 
                         <img alt="decrease" 
