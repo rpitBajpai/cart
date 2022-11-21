@@ -105,24 +105,47 @@ handleDecreaseQuantity = (product) => {
     if(products[index].qty === 0){
         return;
     }
-    products[index].qty -= 1;
+    // products[index].qty -= 1;
 
-    this.setState({
-        // products: products
-        products
-    });
+    // this.setState({
+    //     // products: products
+    //     products
+    // });
+    const docRef = this.db.collection('products').doc(products[index].id);
 
-}
+    docRef
+      .update({
+        qty: products[index].qty - 1
+      })
+      .then(() => {
+        console.log('Updated Successfully');
+      })
+      .catch((error) => {
+        console.log('Error: ', error);
+      })
+
+    }
 
 handleDeleteProduct = (id) => {
     const{ products } = this.state;
 
-    const items = products.filter((item) => item.id !== id); //[{}]
+    // const items = products.filter((item) => item.id !== id); //[{}]
 
-    this.setState({
-        products: items
-    })
-}
+    // this.setState({
+    //     products: items
+    // })
+    const docRef = this.db.collection('products').doc(id);
+
+    docRef
+      .delete()
+      .then(() => {
+        console.log('Deleted Successfully');
+      })
+      .catch((error) => {
+        console.log('Error: ', error);
+      })
+
+    }
 
 getCartCount = () => {
   const {products} = this.state;
