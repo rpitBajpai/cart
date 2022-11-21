@@ -72,17 +72,29 @@ componentDidMount(){
 }
 
 handleIncreaseQuantity = (product) => {
-    console.log('Heyy! please increase the quantity of ', product);
+    // console.log('Heyy! please increase the quantity of ', product);
     const {products} = this.state;
     const index = products.indexOf(product);
 
-    products[index].qty += 1;
+    // products[index].qty += 1;
 
-    this.setState({
-        // products: products
-        products
-    });
+    // this.setState({
+    //     // products: products
+    //     products
+    // });
 
+    const docRef = this.db.collection('products').doc(products[index].id);
+
+    docRef
+      .update({
+        qty: products[index].qty + 1
+      })
+      .then(() => {
+        console.log('Updated Successfully');
+      })
+      .catch((error) => {
+        console.log('Error: ', error);
+      })
 }
 
 handleDecreaseQuantity = (product) => {
