@@ -49,6 +49,10 @@ componentDidMount(){
   // use onSnapshot() to update UI without refreshing the tab
   this.db
     .collection('products')
+    // Querying the data
+    // .where('price', '<=', 999)
+    // .where('title', '==', 'Watch')
+    .orderBy('price', 'desc')
     .onSnapshot((snapshot) => {
       console.log(snapshot);
 
