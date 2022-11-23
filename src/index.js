@@ -6,6 +6,11 @@ import App from './App';
 import * as firebase from 'firebase';
 import 'firebase/firestore';
 
+// import { initializeApp } from 'firebase/app';
+
+
+// import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+
 const firebaseConfig = {
   apiKey: "AIzaSyCueLldZDL0vjBAOqkV-5zb3PJtMFNFVGg",
   authDomain: "cart-a5430.firebaseapp.com",
@@ -16,7 +21,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

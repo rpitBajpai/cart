@@ -1,8 +1,11 @@
 import React from "react";
 // import CartItem from "./CartItem";
 import Cart from './Cart';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
 import * as firebase from 'firebase';
+
+
+
 
 // function App() {
 class App extends React.Component{
@@ -49,25 +52,23 @@ componentDidMount(){
   // use onSnapshot() to update UI without refreshing the tab
   this.db
     .collection('products')
-    // Querying the data
-    // .where('price', '<=', 999)
-    // .where('title', '==', 'Watch')
     .orderBy('price', 'desc')
     .onSnapshot((snapshot) => {
-      console.log(snapshot);
+      // console.log(snapshot);
 
       snapshot.docs.map((doc) => {
         console.log(doc.data());
       });
       const products = snapshot.docs.map((doc) => {
         // return doc.data();
-          const products = snapshot.docs.map((doc) => {
+        //   const products = snapshot.docs.map((doc) => {
           const data = doc.data();
 
           data['id'] = doc.id;
           return data;
-        })
+        // })
       })
+  
       this.setState({
         products,
         loading: false
@@ -191,6 +192,7 @@ addProduct = () => {
 
 render(){
   const {products, loading}= this.state;
+  
   return (
     <div className="App">
       <Navbar count={this.getCartCount()}/>
